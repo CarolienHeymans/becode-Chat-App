@@ -4,6 +4,7 @@
   "description": "chat app with socket.io & Node.js",
   "main": "index.js",
   "scripts": {
+    "start": "nodemon app",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
@@ -17,8 +18,9 @@
   },
   "homepage": "https://github.com/CarolienHeymans/becode-node-socketio#readme",
   "dependencies": {
+    "ejs": "^2.6.1",
     "express": "^4.16.4",
-    "mongodb": "^3.1.13",
-    "mongoose": "^5.4.15"
+    "mongoose": "^5.4.15",
+    "nodemon": "^1.18.10"
   }
 }
