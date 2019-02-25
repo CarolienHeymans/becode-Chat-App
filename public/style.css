@@ -1,0 +1,31 @@
+#chatroom {
+    border: 1px solid rgb(2, 2, 92);
+    height: 500px;
+    margin: 5px;
+    box-sizing: border-box;
+
+}
+
+#users {
+    border: 1px solid rgb(57, 57, 90);
+    height: 500px;
+    margin: 5px;
+    box-sizing: border-box;
+}
+
+#message {
+    border: 1px solid rgb(57, 57, 90);
+    margin: 5px;
+    box-sizing: border-box;
+}
+#send_message{
+    margin: 5px;
+    box-sizing: border-box;    
+}
+.container-fluid{
+    width: 90%;
+    margin: 10px;
+    box-sizing: border-box; 
+ padding: 10px;
+     background-color: rgb(230, 221, 221);
+}
