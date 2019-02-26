@@ -1,58 +1,62 @@
 body {
-    background-color: rgb(160, 163, 168);
-    width:1000px; ;
+    background: #f9f9f9;
+}
+
+#container {
+    width: 700px;
+    margin: 0 auto;
+}
+
+#chatWindow {
+    height: 300px;
+}
+
+#namesWrapper {
+    margin-left: 20px;
+}
+
+#mainWrapper {
+    margin-left: 20px;
+    display: none;
 }
 
 #chatroom {
-    border: 1px solid rgba(31, 31, 34, 0.322);
-    height: 500px;
-    margin: 5px;
-    box-sizing: border-box;
-    background-color: whitesmoke;
-
-}
-
-#mainWrapper{
-    display: none;
-}
-h1 {
-    text-align: center;
-    width: 400px;
-    /* color: whitesmoke; */
-}
-
-#users {
-  
-    height: 500px;
-    margin: 5px;
-    box-sizing: border-box;
-    background-color: whitesmoke;
-
-    border: 1px solid rgba(31, 31, 34, 0.322);
-}
-
-#message {
-    box-sizing: border-box;
-    background-color: whitesmoke;
-}
-
-#send_message {
- 
-    box-sizing: border-box;
-
-}
-
-section {
-    margin: 20px;
-    box-sizing: border-box;
+    float: left;
+    border: 1px #ccc solid;
+    margin-left: 20px;
+    border-radius: 10px;
+    background: #f4f4f4;
     padding: 10px;
-    
+}
+#message{
+    margin-left: 20px;
+}
+#users {
+    float: left;
+    border: 1px #ccc solid;
+    border-radius: 10px;
+    background: #f4f4f4;
+    padding: 10px;
+    margin-left: 20px;
+    width: 150px;
+    max-height: 200px;
 }
 
-.container-fluid {
-      margin: 20px;
-  /*background-color: rgba(78, 78, 78, 0.486); */
+#userList {
+    float: left;
+    border-radius: 10px;
+    background: #f4f4f4;
+    padding: 10px;
+    margin-left: 20px;
 }
+
+input {
+    height: 30px;
+   
+    border: solid 1px #ccc;
+   
+}
+
 .message:nth-child(even) {
     background-color: rgb(189, 193, 194, 0.507);
 }

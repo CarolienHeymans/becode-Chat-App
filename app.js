@@ -2,16 +2,15 @@
 
 const express = require('express');
 const app = express();
-const bodyParser = require("body-parser");
+
 let userNames = [];
-let rooms = ["Games", "Books", "Coding"]
+// let rooms = ["Games", "Books", "Coding"]
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
 //set template engine ejs
 app.set('view engine', 'ejs')
 //middlewares ???
-app.use(bodyParser.json());
 app.use(express.static('public'));
 //routes
 app.get('/', (req, res) => {
@@ -47,7 +46,7 @@ io.on('connection', (socket) => {
                 username: socket.username
             })
         })
-        //listen on typing
+        // typing....
         socket.on('typing', (data) => {
             io.to(room).emit('typing', {
                 username: socket.username
