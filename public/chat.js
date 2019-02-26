@@ -1,22 +1,33 @@
+//client side
+
 $(function () {
     //make connection
     const socket = io.connect('http://localhost:3000')
+
     //buttons & inputs
+    // let roomGames = $("#games");
+    // let roomBooks = $("#books");
+    // let roomCoding = $("#coding");
     let message = $("#message");
     let username = $("#username");
     let send_message = $("#send_message");
-    let send_username = $("#send_username");
+    let submit = $("#submit");
     let chatroom = $("#chatroom");
     let feedback = $("#feedback")
     let users = $("#userList")
-    //emit a username
-    send_username.click(function () {
+  
+
+    //username + room
+    submit.click(function () {
+        let selectedRoom = $("#chatRoomOptions").val();
         socket.emit('change_username', {
             username: username.val()
-
         })
         username.val('')
-
+        $("#chatroomName").html(selectedRoom);
+        socket.emit("joinRoom", selectedRoom);
+        socket.on("err", (err) => console.log(err))
+        socket.on("succes", (res) => console.log(res))
     })
     // //add user to list
     socket.on('usernames', (data) => {
@@ -25,11 +36,14 @@ $(function () {
             listOfUsers += `<li>` + data[i] + `</li>`
         }
         users.html(listOfUsers)
+        $("#namesWrapper").hide()
+        $("#mainWrapper").show()
+
     })
 
     //emit/send message
     send_message.click(function () {
-        socket.emit('new_message', {
+      socket.emit('new_message', {
             message: message.val()
         })
     })
@@ -49,4 +63,7 @@ $(function () {
     socket.on('typing', (data) => {
         feedback.html("<p><i>" + data.username + " is typing a message..." + "</i></p>")
     })
+
+
+
 })

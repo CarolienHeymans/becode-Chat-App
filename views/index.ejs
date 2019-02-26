@@ -12,13 +12,25 @@
 <body>
   <header>
     <h1> Becode chat client =) </h1>
+   
   </header>
-  <div class="container-fluid ">
-    <div class="col-sm-6 col-md-8 col-xl-8 " id="change_username">
-      <input id="username" type="text" />
-      <button id="send_username" type="button">Change username</button>
+  <div class="container-fluid">
+    <div id="namesWrapper">
+      <form id="usernameForm">
+        <label for="username">Choose your username:</label><br>
+        <input id="username" type="text" /><br>
+        <label for="chatRoomOptions">Choose your room:</label>
+        <select id="chatRoomOptions" class="form-control">
+          <option id="coding" selected>Coding</option>
+          <option id="games">Games</option>
+          <option id="books">Books</option>
+        </select>
+      </form>
+      <button type="submit" id="submit" class="btn btn-primary">Sign in</button>
     </div>
-
+  </div>
+  <div id="mainWrapper">
+      <h2 id="chatroomName"></h2>
     <div class="row">
 
       <div class="col-sm-6 col-md-8 col-xl-8" id="chatroom">
@@ -26,7 +38,7 @@
       </div>
 
 
-      <div class="col-sm-2 col-md-2 col-xl-2" id="users">
+      <div class="col-sm-3 col-md-3 col-xl-3" id="users">
         <ul id="userList">
         </ul>
       </div>
@@ -43,6 +55,8 @@
         <button type="submit" class="btn btn-primary md-2" id="send_message">Send</button>
       </div>
     </div>
+
+  </div>
   </div>
   <!-- scripts -->
   <script src="http://code.jquery.com/jquery-latest.min.js"></script>

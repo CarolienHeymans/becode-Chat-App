@@ -1,7 +1,13 @@
+//server side
+
 const express = require('express');
 const app = express();
 const bodyParser = require("body-parser");
-let userNames= [];
+let userNames = [];
+let rooms = ["Games", "Books", "Coding"]
+const server = require('http').Server(app);
+const io = require('socket.io')(server);
+
 //set template engine ejs
 app.set('view engine', 'ejs')
 //middlewares ???
@@ -12,28 +18,41 @@ app.get('/', (req, res) => {
     res.render('index')
 })
 //listen on port 3000
-server = app.listen(3000);
-//socket io time
-const io = require('socket.io')(server);
-//listen on every connection :o
+server.listen(3000);
+console.log("it's alive!");
+
+
+// connection :o
 io.on('connection', (socket) => {
-    console.log('new user yay!')
-    //default username
-    socket.username="Anon"
-    //listen on change_username
-    socket.on('change_username',(data)=>{
-        socket.username=data.username;
-        userNames[socket.username]=socket;
-        io.sockets.emit('usernames',Object.keys(userNames));
+    console.log('Hello =)')
+    socket.on('disconnect', function () {
+        console.log('Goodbye =(')
     })
-    //listen on new_message
-    socket.on('new_message', (data) => {
-        //broadcast the new message
-        io.sockets.emit('new_message', {message : data.message, username : socket.username});
+    //default username
+    socket.username = "Anon"
+    //listen on change_username
+    socket.on('change_username', (data) => {
+        socket.username = data.username;
+        userNames[socket.username] = socket;
+        io.sockets.emit('usernames', Object.keys(userNames));
     })
 
-    //listen on typing
-    socket.on('typing', (data) => {
-    	socket.broadcast.emit('typing', {username : socket.username})
+    //join room + sending messages
+    socket.on('joinRoom', (room) => {
+        socket.join(room)
+        console.log("succes", "Succesfully joined " + room);
+        socket.on('new_message', (data) => {
+            io.to(room).emit('new_message', {
+                message: data.message,
+                username: socket.username
+            })
+        })
+        //listen on typing
+        socket.on('typing', (data) => {
+            io.to(room).emit('typing', {
+                username: socket.username
+            })
+        })
+
     })
 })

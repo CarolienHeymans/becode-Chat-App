@@ -1,31 +1,62 @@
+body {
+    background-color: rgb(160, 163, 168);
+    width:1000px; ;
+}
+
 #chatroom {
-    border: 1px solid rgb(2, 2, 92);
+    border: 1px solid rgba(31, 31, 34, 0.322);
     height: 500px;
     margin: 5px;
     box-sizing: border-box;
+    background-color: whitesmoke;
 
+}
+
+#mainWrapper{
+    display: none;
+}
+h1 {
+    text-align: center;
+    width: 400px;
+    /* color: whitesmoke; */
 }
 
 #users {
-    border: 1px solid rgb(57, 57, 90);
+  
     height: 500px;
     margin: 5px;
     box-sizing: border-box;
+    background-color: whitesmoke;
+
+    border: 1px solid rgba(31, 31, 34, 0.322);
 }
 
 #message {
-    border: 1px solid rgb(57, 57, 90);
-    margin: 5px;
     box-sizing: border-box;
+    background-color: whitesmoke;
 }
-#send_message{
-    margin: 5px;
-    box-sizing: border-box;    
+
+#send_message {
+ 
+    box-sizing: border-box;
+
 }
-.container-fluid{
-    width: 90%;
-    margin: 10px;
-    box-sizing: border-box; 
- padding: 10px;
-     background-color: rgb(230, 221, 221);
+
+section {
+    margin: 20px;
+    box-sizing: border-box;
+    padding: 10px;
+    
+}
+
+.container-fluid {
+      margin: 20px;
+  /*background-color: rgba(78, 78, 78, 0.486); */
+}
+.message:nth-child(even) {
+    background-color: rgb(189, 193, 194, 0.507);
+}
+
+.message:nth-child(odd) {
+    background-color: rgba(103, 115, 128, 0.507);
 }
