@@ -5,9 +5,7 @@ $(function () {
     const socket = io.connect('http://localhost:3000')
 
     //buttons & inputs
-    // let roomGames = $("#games");
-    // let roomBooks = $("#books");
-    // let roomCoding = $("#coding");
+    
     let message = $("#message");
     let username = $("#username");
     let send_message = $("#send_message");
@@ -23,7 +21,7 @@ $(function () {
         socket.emit('change_username', {
             username: username.val()
         })
-        username.val('')
+        
         $("#chatroomName").html(selectedRoom);
         socket.emit("joinRoom", selectedRoom);
         socket.on("err", (err) => console.log(err))

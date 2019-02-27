@@ -39,7 +39,7 @@ io.on('connection', (socket) => {
     //join room + sending messages
     socket.on('joinRoom', (room) => {
         socket.join(room)
-        console.log("succes", "Succesfully joined " + room);
+        console.log("Succesfully joined " + room);
         socket.on('new_message', (data) => {
             io.to(room).emit('new_message', {
                 message: data.message,
