@@ -1,6 +1,5 @@
 //client side
 
-$(function () {
     //make connection
     const socket = io()
 
@@ -67,5 +66,3 @@ $(function () {
     })
 
 
-
-})
