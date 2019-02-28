@@ -1,6 +1,4 @@
 //client side
-
-$(function () {
     //make connection
     const socket = io.connect('http://localhost:3000')
 
@@ -19,7 +17,7 @@ $(function () {
     submit.click(function () {
         let selectedRoom = $("#chatRoomOptions").val();
         
-        socket.emit('signin', {
+        socket.emit('', {
            username: username.val() 
         })
         username.val('')
@@ -63,6 +61,3 @@ $(function () {
         feedback.html("<p><i>" + data.username + " is typing a message..." + "</i></p>")
     })
 
-
-
-})
