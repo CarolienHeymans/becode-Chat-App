@@ -34,8 +34,7 @@ $(function () {
     })
     // //add user to list
     socket.on('usernames', (data) => {
-        $("#chosenUsername").html(data );
-        console.log(data)
+             console.log(data)
         let listOfUsers = '';
         for (i = 0; i < data.length; i++) {
             listOfUsers += `<li>` + data[i] + `</li>`

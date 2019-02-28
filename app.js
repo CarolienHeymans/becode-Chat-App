@@ -60,7 +60,7 @@ io.on('connection', (socket) => {
         } else {
             userNames.splice(userNames.indexOf(socket.username.username), 1)
         }
-        console.log(`users still connected:${connections}, ${userNames}`)
+
         updateUsers();
         console.log(`Okay,bye =(`)
     });
