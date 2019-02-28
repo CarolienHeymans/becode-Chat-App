@@ -1,6 +1,8 @@
 //client side
+
+$(function () {
     //make connection
-    const socket = io.connect('http://localhost:3000')
+    const socket = io()
 
     //buttons & inputs
 
@@ -17,11 +19,12 @@
     submit.click(function () {
         let selectedRoom = $("#chatRoomOptions").val();
         
-        socket.emit('', {
-           username: username.val() 
+        socket.emit('signin', {
+           username: username.val()    
+           
         })
-        username.val('')
-        $("#chatroomName").html(selectedRoom);
+               username.val('')
+             $("#chatroomName").html(selectedRoom );
         socket.emit("joinRoom", selectedRoom);
         socket.on("err", (err) => console.log(err))
         socket.on("succes", (res) => console.log(res))
@@ -31,6 +34,8 @@
     })
     // //add user to list
     socket.on('usernames', (data) => {
+        $("#chosenUsername").html(data );
+        console.log(data)
         let listOfUsers = '';
         for (i = 0; i < data.length; i++) {
             listOfUsers += `<li>` + data[i] + `</li>`
@@ -61,3 +66,6 @@
         feedback.html("<p><i>" + data.username + " is typing a message..." + "</i></p>")
     })
 
+
+
+})

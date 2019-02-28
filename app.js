@@ -19,13 +19,13 @@ console.log("It's alive!");
 io.on('connection', (socket) => {
     console.log(`New user connected =D! Id: ${socket.id}`)
     connections.push(socket.id);
-  
+
     //sign in: pick your username 
     socket.on('signin', (data) => {
         socket.username = data
         userNames.push(data.username);
         updateUsers();
-        console.log(`connected users:${connections},${userNames}`);
+        console.log(`connected users: ID: ${connections}, Names: ${userNames}`);
     })
     //function updateUsers to update the userlist (when people join and leave)
     function updateUsers() {
@@ -54,10 +54,14 @@ io.on('connection', (socket) => {
 
     })
     socket.on('disconnect', () => {
-        userNames.splice(userNames.indexOf(socket.username.username), 1)
         connections.splice(connections.indexOf(socket.id), 1)
+        if (userNames != []) {
+            console.log('no more users')
+        } else {
+            userNames.splice(userNames.indexOf(socket.username.username), 1)
+        }
         console.log(`users still connected:${connections}, ${userNames}`)
         updateUsers();
-        console.log(`Okay,bye ${socket.username.username} =(`)
+        console.log(`Okay,bye =(`)
     });
 })
