@@ -12,35 +12,31 @@ const io = require('socket.io')(server);
 //static ????
 app.use(express.static('public'));
 //listen on port 3000
-server.listen(3000);
+server.listen(process.env.PORT || 3000)
 console.log("It's alive!");
 
 // make connection to server +list all the connections by ID
 io.on('connection', (socket) => {
-    console.log('Hello =) Id: ' + socket.id)
+    console.log(`New user connected =D! Id: ${socket.id}`)
     connections.push(socket.id);
-    console.log(1, connections)
-
+  
     //sign in: pick your username 
     socket.on('signin', (data) => {
         socket.username = data
-        // console.log(data)
-        // console.log(socket.username)
         userNames.push(data.username);
         updateUsers();
-        console.log(3, connections, userNames);
+        console.log(`connected users:${connections},${userNames}`);
     })
-
-    //functions
+    //function updateUsers to update the userlist (when people join and leave)
     function updateUsers() {
         io.emit('usernames', userNames);
     };
 
 
-    //join room + sending messages
+    //join room + sending messages to that room
     socket.on('joinRoom', (room) => {
         socket.join(room)
-        console.log(socket.username.username + " succesfully joined " + room); //joined chatroom of choice
+        console.log(`Welcome to the ${room} chat, ${socket.username.username } =D!`); //joined chatroom of choice
         //send a new message
         socket.on('new_message', (data) => {
             io.sockets.to(room).emit('new_message', {
@@ -58,12 +54,10 @@ io.on('connection', (socket) => {
 
     })
     socket.on('disconnect', () => {
-        console.log(socket.username.username)
         userNames.splice(userNames.indexOf(socket.username.username), 1)
         connections.splice(connections.indexOf(socket.id), 1)
-        console.log(5, connections, userNames)
+        console.log(`users still connected:${connections}, ${userNames}`)
         updateUsers();
-        console.log('Goodbye')
-
+        console.log(`Okay,bye ${socket.username.username} =(`)
     });
 })
