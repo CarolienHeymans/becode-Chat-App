@@ -8,4 +8,5 @@ https://carolienheymans.github.io/becode-Chat-App/
 * CSS
 * HTML
 * Node.JS
+* Bootstrap
 * Socket.IO

@@ -3,13 +3,28 @@ body {
 }
 
 #container {
-    width: 700px;
-    margin: 0 auto;
+     margin: 0 auto;
 }
-
-
+.jumbotron{
+    border-radius: 15px;
+}
+h1, h2{
+    padding:2px; 
+    margin-left: 40%;
+}
+#usernameForm{
+    width:400px; 
+    height: 200px;
+}
+#username,#chatRoomOptions{
+    align-items:center;
+    width: 250px;
+}
 #namesWrapper {
-    margin-left: 20px;
+ 
+    margin-left: 40%;
+   
+    width: 400px;
 }
 
 #mainWrapper {
@@ -21,10 +36,14 @@ body {
     float: left;
     border: 1px #ccc solid;
     margin-left: 20px;
-    border-radius: 10px;
-    background: #f4f4f4;
+    border-radius: 15px;
+    background: #ffffff;
     padding: 10px;
-    height: 300px;
+    overflow-y: scroll;
+    height:400px ;
+    max-height: 400px;
+  
+   
 }
 
 #message {
@@ -35,7 +54,7 @@ body {
     float: left;
     border: 1px #ccc solid;
     border-radius: 10px;
-    background: #f4f4f4;
+    background: #ffffff;
     padding: 10px;
     margin-left: 20px;
     width: 150px;
@@ -45,7 +64,7 @@ body {
 #userList {
     float: left;
     border-radius: 10px;
-    background: #f4f4f4;
+    background: #ffffff;
     padding: 10px;
     margin-left: 20px;
 }
@@ -58,9 +77,24 @@ input {
 }
 
 .message:nth-child(even) {
-    background-color: rgb(189, 193, 194, 0.507);
+    background:rgb(55, 150, 223);
+    padding:10px;
+    text-align:right;
+    color:#fff;
+    margin:5px;
+    width:50%;
+    float:right;
+  margin-right: 30px;
+  border-radius: 15px;
 }
 
 .message:nth-child(odd) {
-    background-color: rgba(103, 115, 128, 0.507);
+    background:rgb(62, 63, 65);
+    padding:10px;
+    margin:5px;
+    color:#fff;
+     width:50%;
+    float:left;
+  margin-left: 30px;
+  border-radius: 15px;
 }

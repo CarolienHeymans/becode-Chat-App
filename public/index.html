@@ -11,15 +11,17 @@
 
 <body>
   <header>
-    <h1> Becode chat client =) </h1>
-   
-  </header>
+ 
+      <h1 > Becode chat client </h1>
+      <h2  id="chatroomName"></h2>
+  
+</header>
   <div class="container-fluid">
-    <div id="namesWrapper">
+    <div class="jumbotron" id="namesWrapper">
       <form id="usernameForm">
         <label for="username">Choose your username:</label><br>
-        <input id="username" type="text" /><br>
-        <label for="chatRoomOptions">Choose your room:</label>
+        <input id="username" type="text" class="form-control" placeholder="username" /> <br>
+        <label for="chatRoomOptions">Choose your room:</label><br>
         <select id="chatRoomOptions" class="form-control">
           <option id="coding" selected>Coding</option>
           <option id="games">Games</option>
@@ -29,8 +31,8 @@
       <button type="submit" id="submit" class="btn btn-primary">Sign in</button>
     </div>
   </div>
-  <div id="mainWrapper">
-      <h2 id="chatroomName"></h2>
+  <div class="jumbotron" id="mainWrapper">
+
     <div class="row">
 
       <div class="col-sm-6 col-md-8 col-xl-8" id="chatroom">

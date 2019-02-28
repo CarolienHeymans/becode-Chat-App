@@ -5,7 +5,7 @@ $(function () {
     const socket = io.connect('http://localhost:3000')
 
     //buttons & inputs
-    
+
     let message = $("#message");
     let username = $("#username");
     let send_message = $("#send_message");
@@ -13,19 +13,23 @@ $(function () {
     let chatroom = $("#chatroom");
     let feedback = $("#feedback")
     let users = $("#userList")
-  
+
 
     //username + room
     submit.click(function () {
         let selectedRoom = $("#chatRoomOptions").val();
-        socket.emit('change_username', {
-            username: username.val()
-        })
         
+        socket.emit('signin', {
+           username: username.val() 
+        })
+        username.val('')
         $("#chatroomName").html(selectedRoom);
         socket.emit("joinRoom", selectedRoom);
         socket.on("err", (err) => console.log(err))
         socket.on("succes", (res) => console.log(res))
+        //show/hide log in & chat
+        $("#namesWrapper").hide()
+        $("#mainWrapper").show()
     })
     // //add user to list
     socket.on('usernames', (data) => {
@@ -34,14 +38,11 @@ $(function () {
             listOfUsers += `<li>` + data[i] + `</li>`
         }
         users.html(listOfUsers)
-        $("#namesWrapper").hide()
-        $("#mainWrapper").show()
-
     })
 
     //emit/send message
     send_message.click(function () {
-      socket.emit('new_message', {
+        socket.emit('new_message', {
             message: message.val()
         })
     })
