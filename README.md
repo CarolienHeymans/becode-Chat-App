@@ -1,7 +1,7 @@
 # becode-Chat-App
 
 # The App
-https://carolienheymans.github.io/becode-Chat-App/
+https://becode-chatapp.herokuapp.com/
 
 # Used technologies:
 * Express
