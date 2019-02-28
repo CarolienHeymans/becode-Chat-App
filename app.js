@@ -9,7 +9,6 @@ let userNames = [];
 const server = require('http').Server(app);
 const io = require('socket.io')(server);
 
-
 //static ????
 app.use(express.static('public'));
 //listen on port 3000
@@ -58,15 +57,11 @@ io.on('connection', (socket) => {
         })
 
     })
-    socket.on('disconnect', () => {  
-                 console.log(socket.username.username)
-     userNames.splice(userNames.indexOf(socket.username.username), 1)
+    socket.on('disconnect', () => {
+        console.log(socket.username.username)
+        userNames.splice(userNames.indexOf(socket.username.username), 1)
         connections.splice(connections.indexOf(socket.id), 1)
-     
-
         console.log(5, connections, userNames)
-
-
         updateUsers();
         console.log('Goodbye')
 
