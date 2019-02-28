@@ -55,12 +55,7 @@ io.on('connection', (socket) => {
     })
     socket.on('disconnect', () => {
         connections.splice(connections.indexOf(socket.id), 1)
-        if (userNames != []) {
-            console.log('no more users')
-        } else {
-            userNames.splice(userNames.indexOf(socket.username.username), 1)
-        }
-
+        userNames.splice(userNames.indexOf(socket.username.username), 1)
         updateUsers();
         console.log(`Okay,bye =(`)
     });
